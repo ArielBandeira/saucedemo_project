@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/// <reference types="../support" />
+
+Cypress.Commands.add('loginUiValidUser', () => {
+    let validUsername: string, validPassword: string;
+    cy.visit('https://www.saucedemo.com/v1/');
+    cy.fixture('users.json').then((data) => {
+        validUsername = data.validUser.username;
+        validPassword = data.validUser.password;
+        cy.get('[data-test="username"]').type(validUsername);
+        cy.get('[data-test="password"]').type(validPassword);
+    });
+    cy.get('[type="submit"]').click();
+    cy.url().should('include', '/inventory.html');
+});
