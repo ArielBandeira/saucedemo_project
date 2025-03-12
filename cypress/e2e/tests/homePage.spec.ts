@@ -16,7 +16,7 @@ describe('Home Page Tests', () => {
         // Verify that button now says 'REMOVE'
         // Verify that cart item quantity updates to 1
         homePage.getFirstItemAddButtonText().should('have.text', 'REMOVE');
-        homePage.grabCartQuantityFromIcon().should('have.text', '1');
+        homePage.assertCartQuantity(1);
 
     });
 
@@ -24,7 +24,7 @@ describe('Home Page Tests', () => {
         // Arrange
         // Add item to cart
         homePage.addFirstItemToCart();
-        homePage.grabCartQuantityFromIcon().should('have.text', '1');
+        homePage.assertCartQuantity(1);
         homePage.getFirstItemAddButtonText().should('have.text', 'REMOVE');
 
         // Act
@@ -35,11 +35,11 @@ describe('Home Page Tests', () => {
         // Verify that button now says 'ADD TO CART'
         // Verify that cart item quantity updates to 1
         homePage.getFirstItemAddButtonText().should('have.text', 'ADD TO CART');
-        homePage.grabCartQuantityFromIcon().should('not.exist');
+        homePage.assertCartQuantity(0);
 
     });
 
-    it('Verify that user is able to sort items alphabetically descending', () => {
+    it('Verify that user is able to sort items alphabetically', () => {
         // Arrange
         // Change items organization to price (not related to the names)
         homePage.sortItemsByPriceHighToLow();
@@ -49,12 +49,13 @@ describe('Home Page Tests', () => {
             const manuallySorted = actualItems.slice().sort();
 
             // Act
-            // Click on dropdown menu and select 'Name (Z to A)'
+            // Click on dropdown menu and select 'Name (A to Z)'
             homePage.sortItemsByNameAtoZ();
 
             homePage.getCurrentListOfItems().then((currentSorting) => {
-            // Assert
-            // Verify that list is now organized alphabetically descending
+
+                // Assert
+                // Verify that list is now organized alphabetically
                 expect(currentSorting).to.deep.equal(manuallySorted);
             });
         });
