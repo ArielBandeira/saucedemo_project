@@ -4,7 +4,7 @@ describe('Login Tests', () => {
     const loginPage = new LoginPage();
     let validUsername, validPassword, invalidPassword, invalidUsername;
 
-    beforeEach(() => {
+    before(() => {
         cy.fixture('users.json').then((data) => {
             validUsername = data.validUser.username;
             validPassword = data.validUser.password;
@@ -20,9 +20,7 @@ describe('Login Tests', () => {
 
         // Act
         // Login with valid user
-        loginPage.fillUsername(validUsername);
-        loginPage.fillPassword(validPassword);
-        loginPage.clickSubmitButton();
+        loginPage.login(validUsername, validPassword);
 
         // Assert
         // User is redirected to home page
@@ -37,15 +35,15 @@ describe('Login Tests', () => {
 
         // Act
         // Login with valid user
-        loginPage.fillUsername(validUsername);
-        loginPage.fillPassword(invalidPassword);
-        loginPage.clickSubmitButton();
+        loginPage.login(validUsername, invalidPassword);
 
         // Assert
         // User is NOT redirected to home page
         // Correct error message is displayed
         cy.url().should('not.include', '/inventory.html');
-        loginPage.getErrorMessage().should('include.text', 'Epic sadface: Username and password do not match any user in this service');
+        loginPage.getErrorMessage()
+            .should('be.visible')
+            .and('have.text', 'Epic sadface: Username and password do not match any user in this service');
 
     });
 
@@ -56,12 +54,29 @@ describe('Login Tests', () => {
 
         // Act
         // Login with valid user
-        loginPage.fillUsername(invalidUsername);
-        loginPage.fillPassword(validPassword);
+        loginPage.login(invalidUsername, validPassword);
+
+        // Assert
+        // Url should not be the one rom Home Page
+        // Correct error message should be displayed
+        cy.url().should('not.include', '/inventory.html');
+        loginPage.getErrorMessage().should('have.text', 'Epic sadface: Username and password do not match any user in this service');
+
+    });
+
+    it('Verify that user is NOT able to login with empty username and password', () => {
+        // Arrange
+        // Go to login page
+        loginPage.visitLoginPage();
+
+        // Act
+        // Do no add username and password and click login button
         loginPage.clickSubmitButton();
 
         // Assert
-        cy.url().should('not.include', '/inventory.html');
-        loginPage.getErrorMessage().should('include.text', 'Epic sadface: Username and password do not match any user in this service');
+        // Correct error message should be displayed
+        loginPage.getErrorMessage().should('have.text', 'Epic sadface: Username is required');
+
     });
+
 });
