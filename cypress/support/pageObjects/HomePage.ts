@@ -1,42 +1,61 @@
 
 export class HomePage {
 
-    // Methods
+    // Locators
+    private addToCartButton = 'button.btn_inventory';
+    private cartIconBadge = 'span.shopping_cart_badge';
+    private leftSideMenuButton = '.bm-burger-button';
+    private itemsName = '.inventory_item_name';
+    private itemLabel = '.inventory_item_label';
+    private inventoryList = '.inventory_list';
+    private cartPage = 'a[href="./cart.html"]';
+    private logoutLink = 'a[href="./index.html"]';
+    private aboutLink = 'a[href="https://saucelabs.com/"]';
+    private homePageLink = 'a[href="./inventory.html"]';
 
+    // Methods
     addFirstItemToCart() {
         cy.contains('ADD TO CART').click();
     }
 
     getFirstItemAddButtonText() {
-        return cy.get('button.btn_inventory').first();
+        return cy.get(this.addToCartButton).first();
+    }
+
+    getFirstItem() {
+        return cy.get(this.inventoryList).children().first().children().eq(1).children();
+    }
+
+    getFirstItemName() {
+        return cy.get(this.inventoryList).find(this.itemsName).first();
     }
 
     grabCartQuantityFromIcon() {
-        return cy.get('span.shopping_cart_badge');
+        return cy.get(this.cartIconBadge);
     }
 
     openSideMenu() {
-        cy.get('div.bm-burger-button').click();
+        cy.get(this.leftSideMenuButton).click();
     }
 
     goToAboutPage() {
-        cy.get('a[href="https://saucelabs.com/"]').click();
+        cy.get(this.aboutLink).click();
     }
 
     goToAllItemsPage() {
-        cy.get('a[href="./inventory.html"]').click();
+        cy.get(this.homePageLink).click();
+    }
+
+    goToCartPage() {
+        cy.get(this.cartPage).click();
     }
 
     logout() {
-        cy.get('a[href="./index.html"]').click();
-    }
-
-    resetAppState() {
-        cy.get('a').contains('Reset App State').click();
+        cy.get(this.logoutLink).click();
     }
 
     getCurrentListOfItems() {
-        return cy.get('div.inventory_item_name').then((elements) => {
+        return cy.get(this.itemsName).then((elements) => {
             const items = Array.from(elements, (element) => element.innerText);
             return items;
         });
@@ -56,6 +75,23 @@ export class HomePage {
 
     sortItemsByPriceHighToLow() {
         cy.get('select').select('Price (high to low)');
+    }
+
+    // Utils
+    goToFirstItemDetailsPage() {
+        this.getFirstItemName().click();
+    }
+
+    getItemByName(itemName: string) {
+        return cy.get(this.itemLabel).contains(itemName);
+    }
+
+    assertCartQuantity(expectedQty: number) {
+        if (expectedQty > 0) {
+            cy.get(this.cartIconBadge).should('have.text', expectedQty.toString());
+        } else {
+            cy.get(this.cartIconBadge).should('not.exist');
+        }
     }
 
 }

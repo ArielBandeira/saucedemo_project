@@ -8,16 +8,23 @@ export class LoginPage {
     private errorMessage = '[data-test="error"]';
 
     // Methods
-
     visitLoginPage() {
         cy.visit('https://www.saucedemo.com/v1/');
     }
 
-    fillUsername(username) {
+    getUsernameField() {
+        return cy.get(this.usernameInput);
+    }
+
+    getPasswordField() {
+        return cy.get(this.passwordInput);
+    }
+
+    fillUsername(username: string) {
         cy.get(this.usernameInput).type(username);
     }
 
-    fillPassword(password) {
+    fillPassword(password: string) {
         cy.get(this.passwordInput).type(password);
     }
 
@@ -29,4 +36,10 @@ export class LoginPage {
         return cy.get(this.errorMessage);
     }
 
+    // Utils
+    login(username: string, password: string) {
+        this.fillUsername(username);
+        this.fillPassword(password);
+        this.clickSubmitButton();
+    }
 }

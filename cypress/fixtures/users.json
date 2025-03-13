@@ -1,10 +1,20 @@
 {
   "validUser": {
     "username": "standard_user",
-    "password": "secret_sauce"
+    "password": "secret_sauce",
+    "firstName": "John",
+    "lastName": "Marston",
+    "postalCode": 123456,
+    "paymentInformation": "SauceCard #31337",
+    "shippingInformation": "FREE PONY EXPRESS DELIVERY!"
   },
   "invalidUser": {
     "username": "invalid_user",
-    "password": "invalid_password"
+    "password": "invalid_password",
+    "firstName": "Dutch",
+    "lastName": "Van Der Linde",
+    "postalCode": 666,
+    "paymentInformation": "ArmadilloCard #31337",
+    "shippingInformation": "ROACH DELIVERY!"
   }
 }
