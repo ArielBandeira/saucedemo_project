@@ -3,6 +3,7 @@ export class CartPage {
 
     // Locators
     private cartItemNames = 'div.inventory_item_name';
+    private cartItemDescription = 'div.inventory_item_desc';
     private removeButton = 'button.cart_button';
     private continueShoppingBtn = 'a[href="./inventory.html"]';
     private checkoutBtn = 'a[href="./checkout-step-one.html"]';
@@ -10,6 +11,10 @@ export class CartPage {
     // Methods
     getCartItemNames() {
         return cy.get(this.cartItemNames);
+    }
+
+    getCartItemDescription() {
+        return cy.get(this.cartItemDescription);
     }
 
     removeFirstItemFromCart() {
