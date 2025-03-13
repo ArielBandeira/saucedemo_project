@@ -1,7 +1,13 @@
 
 
-## ✅ Project Overview
-This is the project for the QA Engineer position at Fortics.
+## Project Overview
+Project challenge for the QA Engineer position at Fortics.
+This project contains end-to-end automation for a demo website named Sauce Demo (from [SwagLabs](https://saucelabs.com/)).
+This project uses Cypress with TypeScript and the Page Object Model (POM) design pattern.
+
+### Sauce Demo
+<img src="https://live.staticflickr.com/65535/54382050807_37d33ad71d_h.jpg" width="400" />
+
 
 ## ✅ Installation & Setup
 Installing Cypress, instructions from the official docs -> https://docs.cypress.io/app/get-started/install-cypress
@@ -37,38 +43,14 @@ Run specific test
 ## ✅ Functional Test Cases
 
 ### Login Page
-####  [TC-A001] : Verify that user is able to login with the correct username and correct password
-####  [TC-A001] : Verify that user is not able to login with incorrect username and correct password
-####  [TC-A001] : Verify that user is not able to login with correct username and incorrect password
-####  [TC-A001] : Verify that user is not able to login with empty field for username
-####  [TC-A001] : Verify that user is not able to login with empty field for password
 
 ### Home Page
-#### [TC-A001] : Verify that user is able to logout
-#### [TC-A001] : Verify that user is able to add product to cart
-#### [TC-A001] : Verify that user is able to remove product from cart on the Home page
-#### [TC-A001] : Verify that user is able to open left side menu
-#### [TC-A001] : Verify that user is able to got to About page from left side menu
-#### [TC-A001] : Verify that user is able to sort items alphabetically ascending
-#### [TC-A001] : Verify that user is able to sort items alphabetically descending
-#### [TC-A001] : Verify that user is able to sort items by price from low to high
-#### [TC-A001] : Verify that user is able to sort items by price from high to low
 
 ### Cart Page
-#### [TC-A001] : Verify that user is able to remove product from cart on the Cart page
-#### [TC-A001] : Verify that user is able to go back from the Cart page to Home page using Continue Shopping Button
-#### [TC-A001] : Verify that user is able to go to Check page using Checkout button
 
 ### Checkout Page Step One
-#### [TC-A001] : Verify that user is able to fill the Checkout page form
-#### [TC-A001] : Verify that user is not able to continue without filling the First Name in the Checkout page form
-#### [TC-A001] : Verify that user is not able to continue without filling the Last Name in the Checkout page form
-#### [TC-A001] : Verify that user is not able to continue without filling the Zip/Postal Code in the Checkout page form
 
 ### Checkout Page Step Two
-#### [TC-A001] : Verify that user is able to see the correct cart information in the Checkout page
-#### [TC-A001] : Verify that user is able to finish the purchase in the Checkout page
-#### [TC-A001] : Verify that user is able to cancel the purchase in the Checkout page
 
 
 
