@@ -1,7 +1,9 @@
 import {LoginPage} from "../../support/pageObjects/LoginPage";
+import {HomePage} from "../../support/pageObjects/HomePage";
 
 describe('Login Tests', () => {
     const loginPage = new LoginPage();
+    const homePage = new HomePage();
     let validUsername, validPassword, invalidPassword, invalidUsername;
 
     before(() => {
@@ -24,8 +26,9 @@ describe('Login Tests', () => {
 
         // Assert
         // User is redirected to home page
+        // User can see items
         cy.url().should('include', '/inventory.html');
-
+        homePage.getFirstItem().should('be.visible');
     });
 
     it('Verify that user is NOT able to login with invalid password', () => {

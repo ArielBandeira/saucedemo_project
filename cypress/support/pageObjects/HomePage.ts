@@ -6,6 +6,8 @@ export class HomePage {
     private cartIconBadge = 'span.shopping_cart_badge';
     private leftSideMenuButton = '.bm-burger-button';
     private itemsName = '.inventory_item_name';
+    private itemLabel = '.inventory_item_label';
+    private inventoryList = '.inventory_list';
     private cartPage = 'a[href="./cart.html"]';
     private logoutLink = 'a[href="./index.html"]';
     private aboutLink = 'a[href="https://saucelabs.com/"]';
@@ -20,8 +22,12 @@ export class HomePage {
         return cy.get(this.addToCartButton).first();
     }
 
+    getFirstItem() {
+        return cy.get(this.inventoryList).children().first();
+    }
+
     getFirstItemName() {
-        return cy.get(this.itemsName).first();
+        return cy.get(this.inventoryList).find(this.itemsName).first();
     }
 
     grabCartQuantityFromIcon() {
@@ -48,10 +54,6 @@ export class HomePage {
         cy.get(this.logoutLink).click();
     }
 
-    resetAppState() {
-        cy.get('a').contains('Reset App State').click();
-    }
-
     getCurrentListOfItems() {
         return cy.get(this.itemsName).then((elements) => {
             const items = Array.from(elements, (element) => element.innerText);
@@ -75,7 +77,20 @@ export class HomePage {
         cy.get('select').select('Price (high to low)');
     }
 
-    //Utils
+    // Utils
+    goToItemDetailsPageFromFirstItem() {
+        this.getFirstItemName().click();
+    }
+
+    getItemDescriptionByName(itemName: string) {
+        return cy.get(this.itemLabel).contains(itemName).next().first();
+    }
+
+
+    getItemByName(itemName: string) {
+        return cy.get(this.itemLabel).contains(itemName);
+    }
+
     assertCartQuantity(expectedQty: number) {
         if (expectedQty > 0) {
             cy.get(this.cartIconBadge).should('have.text', expectedQty.toString());

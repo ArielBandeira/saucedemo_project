@@ -75,7 +75,7 @@ describe("Cart Page Tests", () => {
         // Verify that user is redirected to the correct page
         // Verify that user is able to see items list
         cy.url().should('include', '/inventory.html');
-        homePage.getFirstItemName().should('be.visible');
+        homePage.getFirstItem().should('be.visible');
 
     });
 

@@ -12,6 +12,14 @@ export class LoginPage {
         cy.visit('https://www.saucedemo.com/v1/');
     }
 
+    getUsernameField() {
+        return cy.get(this.usernameInput);
+    }
+
+    getPasswordField() {
+        return cy.get(this.passwordInput);
+    }
+
     fillUsername(username: string) {
         cy.get(this.usernameInput).type(username);
     }

@@ -1,7 +1,11 @@
 import {HomePage} from "../../support/pageObjects/HomePage";
+import {LoginPage} from "../../support/pageObjects/LoginPage";
+import {ItemDetailsPage} from "../../support/pageObjects/ItemDetailsPage";
 
 describe('Home Page Tests', () => {
     const homePage = new HomePage();
+    const loginPage = new LoginPage();
+    const itemDetailsPage = new ItemDetailsPage();
 
     beforeEach(() => {
         cy.loginUiValidUser();
@@ -18,6 +22,15 @@ describe('Home Page Tests', () => {
         homePage.getFirstItemAddButtonText().should('have.text', 'REMOVE');
         homePage.assertCartQuantity(1);
 
+    });
+
+    it('Verify that user is able to go to Item Details page from the Home Page', () => {
+        // Act
+        homePage.getFirstItemName().first().click();
+
+        // Assert
+        cy.url().should('include', '/inventory-item.html');
+        itemDetailsPage.getItemName().should('be.visible');
     });
 
     it('Verify that user is able to remove product from cart on the Home page', () => {
@@ -59,6 +72,7 @@ describe('Home Page Tests', () => {
                 expect(currentSorting).to.deep.equal(manuallySorted);
             });
         });
+
     });
 
     it('Verify that user is able to logout', () => {
@@ -73,6 +87,8 @@ describe('Home Page Tests', () => {
         // Assert
         // Verify that user is redirected to login page
         cy.url().should('include', '/index.html');
+        loginPage.getUsernameField().should('be.visible');
+
     });
 
 });
