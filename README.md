@@ -18,16 +18,15 @@ Using NPM
 ## ✅ Folder Structure
 
 ```
-└───cypress
-    ├───e2e
-    │   ├───1-getting-started
-    │   ├───2-advanced-examples
-    │   └───tests
-    ├───fixtures
-    └───support
-        └───pageObjects
+├───cypress
+│   ├───e2e
+│   │   └───tests
+│   ├───fixtures
+│   ├───screenshots
+│   └───support
+│       ├───pageObjects
+│       └───utils
 ```
-
 
 ## ✅ Running Tests
 
