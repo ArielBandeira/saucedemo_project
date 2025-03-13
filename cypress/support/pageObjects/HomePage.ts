@@ -23,7 +23,7 @@ export class HomePage {
     }
 
     getFirstItem() {
-        return cy.get(this.inventoryList).children().first();
+        return cy.get(this.inventoryList).children().first().children().eq(1).children();
     }
 
     getFirstItemName() {
@@ -78,14 +78,9 @@ export class HomePage {
     }
 
     // Utils
-    goToItemDetailsPageFromFirstItem() {
+    goToFirstItemDetailsPage() {
         this.getFirstItemName().click();
     }
-
-    getItemDescriptionByName(itemName: string) {
-        return cy.get(this.itemLabel).contains(itemName).next().first();
-    }
-
 
     getItemByName(itemName: string) {
         return cy.get(this.itemLabel).contains(itemName);

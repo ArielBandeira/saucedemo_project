@@ -119,7 +119,7 @@ describe('Checkout Page Step Two Tests', () => {
 
         // Assert
         cy.url().should('include', '/inventory.html');
-        homePage.getFirstItem().should('be.visible');
+        homePage.getFirstItemName().should('be.visible');
 
     });
 
