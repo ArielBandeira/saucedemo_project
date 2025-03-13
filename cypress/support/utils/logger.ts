@@ -1,6 +1,10 @@
 export class Logger {
-    static info(message: string) {
-        cy.log(`ℹ️ [INFO]: ${message}`);
+    static setup(message: string) {
+        cy.log(`ℹ️ [TEST SETUP]: ${message}`);
+    }
+
+    static testStep(message: string) {
+        cy.log(`ℹ️ [TEST STEP]: ${message}`);
     }
 
     static warn(message: string) {
@@ -14,4 +18,5 @@ export class Logger {
     static success(message: string) {
         cy.log(`✅ [SUCCESS]: ${message}`);
     }
+
 }
