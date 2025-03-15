@@ -2,6 +2,7 @@
   "name": "cypress_project",
   "version": "1.0.0",
   "devDependencies": {
-    "cypress": "^14.1.0"
+    "cypress": "^14.1.0",
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
