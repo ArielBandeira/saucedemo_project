@@ -38,6 +38,11 @@ Run specific test
 
 `npx cypress run --spec cypress/e2e/tests/login.spec.ts`
 
+## Test Reports
+
+Open test run results in folder `cypress/reports`
+
+<img src="https://live.staticflickr.com/65535/54387800685_933d7a41dd_z.jpg" width="400"  alt="sauce demo item list"/>
 
 ## ✅ Functional Test Cases
 
@@ -100,11 +105,12 @@ Run specific test
 
 If you have questions or suggestions, feel free to reach out.
 
-**Author**: Ariel Bandeira
+> - **Author**: Ariel Bandeira
+>
+> - **Email**: arielbandeira47@gmail.com
+>
+> - **LinkedIn**: [linkedin.com/in/arielbandeira](https://www.linkedin.com/in/arielbandeira/)
 
-**Email**: arielbandeira47@gmail.com
-
-**LinkedIn**: [linkedin.com/in/arielbandeira](https://www.linkedin.com/in/arielbandeira/)
 
 ## 📢 Final Notes
 This project is a work in progress. Improvements and feedback are always appreciated. Happy Testing! 🚀
