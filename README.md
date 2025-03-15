@@ -13,7 +13,9 @@ This project uses Cypress with TypeScript and the Page Object Model (POM) design
 Installing Cypress, instructions from the official docs -> https://docs.cypress.io/app/get-started/install-cypress
 Using NPM
 
-`npm install cypress --save-dev`
+```bash
+  npm install cypress --save-dev
+```
 
 ## ✅ Folder Structure
 
@@ -32,13 +34,17 @@ Using NPM
 
 Open test runner
 
-`npx cypress run`
+```bash
+    npx cypress run
+```
 
 Run specific test
 
-`npx cypress run --spec cypress/e2e/tests/login.spec.ts`
+```bash
+  npx cypress run --spec cypress/e2e/tests/login.spec.ts
+```
 
-## Test Reports
+## ✅ Test Reports
 
 Open test run results in folder `cypress/reports`
 
