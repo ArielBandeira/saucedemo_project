@@ -1,7 +1,6 @@
 
 
 ## Project Overview
-Project challenge for the QA Engineer position at Fortics.
 This project contains end-to-end automation for a demo website named Sauce Demo (from [SwagLabs](https://saucelabs.com/)).
 This project uses Cypress with TypeScript and the Page Object Model (POM) design pattern.
 
